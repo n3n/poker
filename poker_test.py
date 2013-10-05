@@ -94,14 +94,34 @@ class TestPoker(unittest.TestCase):
 		actual = poker.kind(4, [9, 4, 9, 9, 9])
 		expected = 9
 		self.assertEqual(actual, expected)
-					
-	#def test_twopair(self):
-		#'''Test twopair with ['5C', 'AS', '2C', '3C', '5H']'''
-		
-		#actual = poker.twopair(['5C', 'AS', '2C', '3C', '5H'])
-		#expected = True
-		#self.assertEqual(actual, expected)
 	
+	def test_one_pair_1(self):
+		'''Test four of kind with [9, 4, 9, 8, 6]'''
+		
+		actual = poker.kind(2, [9, 4, 9, 8, 6])
+		expected = 9
+		self.assertEqual(actual, expected)
+
+	def test_one_pair_2(self):
+		'''Test four of kind with [11, 4, 2, 2, 9]'''
+		
+		actual = poker.kind(2, [11, 4, 2, 2, 9])
+		expected = 2
+		self.assertEqual(actual, expected)			
+			
+	def test_twopair_1(self):
+		'''Test twopair with [11, 10, 9, 8, 7]'''
+		
+		actual = poker.twopair([11, 10, 9, 8, 7])
+		expected = ()
+		self.assertEqual(actual, expected)
+
+	def test_twopair_2(self):
+		'''Test twopair with [5, 5, 9, 8, 8]'''
+		
+		actual = poker.twopair([5, 5, 9, 8, 8])
+		expected = (8, 5)
+		self.assertEqual(actual, expected)
 
 if __name__ == '__main__':
 	unittest.main(exit=False)
