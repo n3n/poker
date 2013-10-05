@@ -47,7 +47,7 @@ def hand_rank(hand):
     elif kind(4, ranks):
         return 7, kind(4, ranks)
     elif fullhouse(ranks):
-        return 6, kind(3, ranks)
+        return 6, kind(3, ranks), kind(2, ranks)
     elif flush(hand):
         return 5, ranks
     elif straight(hand):
@@ -115,8 +115,24 @@ def flush(hand):
     suits = [s for r,s in hand]
     return len(set(suits)) == 1
 
-def full_house(hand):
-	pass
+def full_house(ranks):
+   """
+   (ranks)-> Bool
+ 
+   Return True if hand is fullhouse,
+   false otherwise
+ 
+   >>> sf_ranks = [11, 10, 9, 8, 7]
+   >>> fullhouse(sf_ranks)
+   False
+   >>> fk_ranks = [5, 5, 5, 5, 13]
+   >>> fullhouse(fk_ranks)
+   False
+   >>> fh_ranks = [5, 5, 5, 8, 8]
+   >>> fullhouse(fh_ranks)
+   True
+   """
+   return True if kind(3, ranks) and kind(2, ranks) else False
 	
 def kind(n, ranks):
     """
@@ -151,3 +167,4 @@ def game():
 	pass
 	
 #print flush(['JC', 'TC', '9C', '8C', '7C'])
+#print kind(3, [4, 4, 4, 3, 7])
