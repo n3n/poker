@@ -25,7 +25,6 @@ class TestPoker(unittest.TestCase):
 		expected = False
 		self.assertEqual(actual, expected)
 		
-<<<<<<< HEAD
 	def test_flush(self):
 		'''Test straight flush with ['5C', 'TC', '9C', '3C', '7C']'''
 		
@@ -35,10 +34,3 @@ class TestPoker(unittest.TestCase):
 	
 if __name__ == '__main__':
 	unittest.main(exit=False)
-=======
-
-if __name__ == '__main__':
-        unittest.main(exit=False)
-
-
->>>>>>> b7c1677ee0276ad330cea672d6994d6844210f5f
