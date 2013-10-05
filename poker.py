@@ -17,7 +17,11 @@ def poker(hands):
     return allmax(hands)
  
 def gen_Card():
-	pass
+	deck = []
+	for rank in '23456789TJQKA':
+		for suit in 'CDHS':
+			deck.append(rank+suit)
+	return deck
 
 def allmax(hands):
     winhand = max(hands, key=hand_rank)
@@ -120,4 +124,4 @@ def kind(hand):
 def twopair(hand):
 	pass
 	
-print flush(['JC', 'TC', '9C', '8C', '7C'])
+#print flush(['JC', 'TC', '9C', '8C', '7C'])
