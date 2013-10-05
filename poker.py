@@ -118,10 +118,36 @@ def flush(hand):
 def full_house(hand):
 	pass
 	
-def kind(hand):
-	pass
+def kind(n, ranks):
+    """
+   (ranks)-> int
+ 
+   Return rank if hand is n kind,
+   false otherwise
+ 
+   >>> sf_ranks = [11, 10, 9, 8, 7]
+   >>> kind(4, sf_ranks)
+   0
+   >>> fk_ranks = [5, 5, 5, 5, 13]
+   >>> kind(4, fk_ranks)
+   5
+   >>> fh_ranks = [5, 5, 5, 8, 8]
+   >>> kind(3, fh_ranks)
+   5
+   >>> op_ranks = [5, 3, 9, 8, 8]
+   >>> kind(2, op_ranks)
+   8
+   """
+   
+    for r in ranks:
+        if ranks.count(r) == n:
+            return r
+    return 0
 	
 def twopair(hand):
+	pass
+	
+def game():
 	pass
 	
 #print flush(['JC', 'TC', '9C', '8C', '7C'])
