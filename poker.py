@@ -16,10 +16,13 @@ def poker(hands):
    """
     return allmax(hands)
  
+def gen_Card():
+	pass
+
 def allmax(hands):
     winhand = max(hands, key=hand_rank)
     maxval = hand_rank(winhand)
-    return [hand for hand in hands if hand_rank(hand)==maxval]
+    return [hand for hand in hands if hand_rank(hand) == maxval]
 
 def hand_rank(hand):
     """
@@ -32,7 +35,8 @@ def hand_rank(hand):
    """
     ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
     ranks.sort(reverse=True)
-    if ranks == [14,5,4,3,2]: ranks = [5,4,3,2,1]
+    if ranks == [14,5,4,3,2]:
+		ranks = [5,4,3,2,1]
        
     if straight_flush(hand):
         return 8, max(ranks)
@@ -87,8 +91,8 @@ def straight(hand):
     ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
     ranks.sort(reverse=True)
     if ranks == [14,5,4,3,2]:
-        ranks = [5,4,3,2,1]
-   
+		ranks = [5,4,3,2,1]
+  
     return max(ranks)-min(ranks) == 4 and len(set(ranks)) == 5  
  
 def flush(hand):
@@ -104,7 +108,16 @@ def flush(hand):
    >>> flush(fk)
    False
    """
-   
     suits = [s for r,s in hand]
- 
     return len(set(suits)) == 1
+
+def full_house(hand):
+	pass
+	
+def kind(hand):
+	pass
+	
+def twopair(hand):
+	pass
+	
+print flush(['JC', 'TC', '9C', '8C', '7C'])
