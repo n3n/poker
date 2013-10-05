@@ -40,9 +40,9 @@ class TestPoker(unittest.TestCase):
 		self.assertEqual(actual, expected)
 		
 	def test_flush_2(self):
-		'''Test flush with ['8S', '6HC', '9C', '2D', '4H']'''
+		'''Test flush with ['8S', '6H', '9C', '2D', '4H']'''
 		
-		actual = poker.flush(['8S', '6HC', '9C', '2D', '4H'])
+		actual = poker.flush(['8S', '6H', '9C', '2D', '4H'])
 		expected = False
 		self.assertEqual(actual, expected)
 		
