@@ -13,20 +13,6 @@ def poker(hands):
    >>> fh = ['5S', '5H', '5D', '8C', '8S']
    >>> poker([fh, fk])
    [['5S', '5H', '5D', '5C', 'KS']]
-   >>> s1 = ['JC', 'TC', '9C', '8S', '7C']
-   >>> poker([fh, s1])
-   [['5S', '5H', '5D', '8C', '8S']]
-   >>> op = ['5S', '3H', '9D', '8C', '8S']
-   >>> tp = ['5S', '5H', '9D', '8C', '8S']
-   >>> hc = ['4S', '3H', '9D', '8C', 'TS']
-   >>> poker([op, tp])
-   [['5S', '5H', '9D', '8C', '8S']]
-   >>> poker([op, hc])
-   [['5S', '3H', '9D', '8C', '8S']]
-   >>> poker([op, hc, sf])
-   [['JC', 'TC', '9C', '8C', '7C']]
-   >>> poker([op])
-   [['5S', '3H', '9D', '8C', '8S']]
    """
     return allmax(hands)
  
@@ -70,8 +56,7 @@ def hand_rank(hand):
    """
     ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
     ranks.sort(reverse=True)
-    if ranks == [14,5,4,3,2]:
-        ranks = [5,4,3,2,1]
+    if ranks == [14,5,4,3,2]: ranks = [5,4,3,2,1]
        
     if straight_flush(hand):
         return 8, max(ranks)
@@ -216,3 +201,4 @@ def twopair(ranks):
     if high_pair != low_pair:
         return (high_pair, low_pair)
     return ()
+
