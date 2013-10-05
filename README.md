@@ -6,8 +6,8 @@ Game Mode
 ----------
 There are two mode that hands can be choose.
 
-*1-Mode :A hand get five cards in one time.
-*2-Mode :A hand get five cards by rolling.
+* 1-Mode :A hand get five cards in one time.
+* 2-Mode :A hand get five cards by rolling.
 
 General Rules
 -------------
@@ -23,14 +23,14 @@ How the hands are ranked
 ------------------------
 Hands are ranked as follows(from high to low):
 
-*Straight Flush
-*Four of a kind
-*Full House
-*Flush
-*Straight
-*Three of a kind
-*Two Pair
-*Pair
-*High Card
+* Straight Flush
+* Four of a kind
+* Full House
+* Flush
+* Straight
+* Three of a kind
+* Two Pair
+* Pair
+* High Card
 
 
