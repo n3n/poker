@@ -31,6 +31,27 @@ class TestPoker(unittest.TestCase):
 		actual = poker.flush(['5C', 'TC', '9C', '3C', '7C'])
 		expected = True
 		self.assertEqual(actual, expected)
+		
+	def full_house(self):
+		'''Test full_house with ['5C', 'TC', '9C', '3C', '7C']'''
+		
+		actual = poker.full_house(['5C', 'TC', '9C', '3C', '7C'])
+		expected = True
+		self.assertEqual(actual, expected)
+		
+	def kind(self):
+		'''Test 3 of kind with ['5C', 'TC', '9C', '3C', '7C']'''
+		
+		actual = poker.kind(['5C', 'TC', '9C', '3C', '7C'])
+		expected = True
+		self.assertEqual(actual, expected)
+		
+	def two_pair(self):
+		'''Test twopair with ['5C', 'TC', '9C', '3C', '7C']'''
+		
+		actual = poker.twopair(['5C', 'TC', '9C', '3C', '7C'])
+		expected = True
+		self.assertEqual(actual, expected)
 	
 if __name__ == '__main__':
 	unittest.main(exit=False)
