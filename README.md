@@ -6,9 +6,12 @@ Game Mode
 ----------
 There are two mode that hands can be choose.
 
-* 1-Mode :A hand get five cards in one time.
-
-* 2-Mode :A hand get five cards by rolling.
+* 1-Mode:Single-Player
+	+ 1.1-Mode :A hand get five cards in one time.
+	+ 1.2-Mode :A hand get five cards by rolling.
+* 2-Mode:MultiPlayer
+	+ 1.1-Mode :A hand get five cards in one time.
+	+ 1.2-Mode :A hand get five cards by rolling.
 
 General Rules
 =============
@@ -23,6 +26,7 @@ How the hands are ranked
 ------------------------
 Hands are ranked as follows(from high to low):
 
+* Royal Straight Flush
 * Straight Flush
 * Four of a kind
 * Full House
@@ -34,6 +38,11 @@ Hands are ranked as follows(from high to low):
 * High Card
 
 **Note: When hands tie on the rank of a pair, three of a kind, etc, the cards outside break ties following the High Card rules.** 
+
+Royal Straight Flush
+--------------------
+Five cards in sequence(A, K, Q, J, T), all of the same suit. The highest suit(S=spade)of hand wins.
+
 
 Straight Flush
 --------------
