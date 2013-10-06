@@ -66,7 +66,11 @@ def hand_rank(hand):
         return 1, kind(2, ranks), ranks
     else:
         return 0, ranks
- 
+        
+def royal_straight_flush(hand):
+	
+	return flush(hand)
+	
 def straight_flush(hand):
     """
    (hand)-> Bool
@@ -181,9 +185,19 @@ def twopair(ranks):
     return ()
 
 def singleplayer():
-    '''For a hand that choosing single mode'''
-	
+	deck = gen_Card()
 	name = raw_input("Enter name: ")
+	os.system("clear")
+	print '    ____         '
+	print '  / ____|         '
+	print ' | |                __      __      ____      ____      _______            '
+	print ' | |               |  |    |  |    /    \    |    \    |   ____|      '
+	print '  \ \\     ______  |   \  /   |   /  __  \   |  _  \   |  |____              '
+	print '    \ \\  [______] |    \/    |  |  |  |  |  | | \  |  |  ____ |         '
+	print '     | |           |  |\  /|  |  |  |__|  |  | |_/  |  |   ____|         '
+	print ' ____| |           |  | \/ |  |   \      /   |     /   |  |____                '
+	print '|_____/            |__|    |__|    \____/    |____/    |_______|                     '
+
 	
 	gameplayer0, gameplayer1, gameplayer2, gameplayer3, i = [], [], [], [], 1
 	for player in xrange(3):
@@ -193,15 +207,17 @@ def singleplayer():
 			(eval('gameplayer%s' % str(player))).append(deck[card_num])
 			deck.pop(card_num)
 			random.shuffle(deck)		
-	print gameplayer0, gameplayer1, gameplayer2
+	#print gameplayer0, gameplayer1, gameplayer2
 	print poker([gameplayer0, gameplayer1, gameplayer2])
 	
 def multiplayer():
-    '''For a hand that choosing multiplayer mode'''
 	pass
 		
 def game():
-    '''Choice for a hand to choose a mode'''
+	"""
+	game
+	
+	"""
 	
 	print "|------------------------------------------------------------|"
 	print "|                         Poker Game                         |"
@@ -228,6 +244,7 @@ def game():
 		return "Exit"
 
 #print twopair([11, 10, 9, 8, 7])
-print game()
+#print game()
 #print poker([['JC', 'TC', '9C', '8C', '7C'],['5S', '5H', '5D', '5C', 'KS']])
-#print poker([['9S', '8C', 'KC', '4S', '9H'], ['8D', '3H', 'QS', '3C', 'JD']])
+#print poker([['9S', '8C', 'KC', '4S', 'TH'], ['8D', '4H', 'QS', '3C', 'JD']])
+print singleplayer()
