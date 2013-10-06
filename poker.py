@@ -181,7 +181,19 @@ def twopair(ranks):
     return ()
 
 def singleplayer():
-	pass
+	
+	name = raw_input("Enter name: ")
+	
+	gameplayer0, gameplayer1, gameplayer2, gameplayer3, i = [], [], [], [], 1
+	for player in xrange(3):
+		for card in xrange(5):
+			card_num = random.randrange(0, 53-i)
+			i += 1
+			(eval('gameplayer%s' % str(player))).append(deck[card_num])
+			deck.pop(card_num)
+			random.shuffle(deck)		
+	print gameplayer0, gameplayer1, gameplayer2
+	print poker([gameplayer0, gameplayer1, gameplayer2])
 	
 def multiplayer():
 	pass
