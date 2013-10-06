@@ -181,6 +181,7 @@ def twopair(ranks):
     return ()
 
 def singleplayer():
+    '''For a hand that choosing single mode'''
 	
 	name = raw_input("Enter name: ")
 	
@@ -196,9 +197,11 @@ def singleplayer():
 	print poker([gameplayer0, gameplayer1, gameplayer2])
 	
 def multiplayer():
+    '''For a hand that choosing multiplayer mode'''
 	pass
 		
 def game():
+    '''Choice for a hand to choose a mode'''
 	
 	print "|------------------------------------------------------------|"
 	print "|                         Poker Game                         |"
