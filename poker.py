@@ -185,8 +185,8 @@ def twopair(ranks):
     return ()
 
 def singleplayer():
-	deck = gen_Card()
-	os.system("clear")
+	'''For a hand that choosing single mode''' 
+	os.system("clear")	
 	print '|=============================================================================|'
 	print '|     _____                                                                   |'
 	print '|    / ____|                                                                  |'
@@ -200,8 +200,13 @@ def singleplayer():
 	print '|                                                                             |'
 	print '|=============================================================================|'
 	
-	name = raw_input("Enter name: ")
+	deck = gen_Card()
+
 	
+	name = raw_input("Enter name: ")
+	players = input("Enter players(2-4): ")
+	print ''
+	print "" + name + ":"
 	gameplayer0, gameplayer1, gameplayer2, gameplayer3, i = [], [], [], [], 1
 	for player in xrange(3):
 		for card in xrange(5):
@@ -210,17 +215,18 @@ def singleplayer():
 			(eval('gameplayer%s' % str(player))).append(deck[card_num])
 			deck.pop(card_num)
 			random.shuffle(deck)		
-	#print gameplayer0, gameplayer1, gameplayer2
-	print poker([gameplayer0, gameplayer1, gameplayer2])
+	if players == 1: print poker([gameplayer0])
+	elif players == 2: print poker([gameplayer0, gameplayer1])
+	elif players == 3: print poker([gameplayer0, gameplayer1, gameplayer2])
+	elif players == 4: print poker([gameplayer0, gameplayer1, gameplayer2, gameplayer3])
 	
 def multiplayer():
+	'''For a hand that choosing multiplayer mode''' 
 	pass
 		
 def game():
-	"""
-	game
+	'''Choice for a hand to choose a mode''' 
 	
-	"""
 	
 	print "|------------------------------------------------------------|"
 	print "|                         Poker Game                         |"
@@ -247,7 +253,7 @@ def game():
 		return "Exit"
 
 #print twopair([11, 10, 9, 8, 7])
-#print game()
+print game()
 #print poker([['JC', 'TC', '9C', '8C', '7C'],['5S', '5H', '5D', '5C', 'KS']])
 #print poker([['9S', '8C', 'KC', '4S', 'TH'], ['8D', '4H', 'QS', '3C', 'JD']])
-print singleplayer()
+#print singleplayer()
