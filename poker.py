@@ -222,6 +222,19 @@ def singleplayer():
 	
 def multiplayer():
 	'''For a hand that choosing multiplayer mode''' 
+	os.system("clear")	
+	print '|=============================================================================|'
+	print '|   ___        ___                                                            |'
+	print '|  |   |      |   |                                                           |'
+	print '|  |    \    /    |             __      __      ____      ____      _______   |'
+	print '|  |     \  /     |            |  |    |  |    /    \    |    \    |   ____|  |'
+	print '|  |      \/      |   ______   |   \  /   |   /  __  \   |  _  \   |  |____   | '
+	print '|  |   |\    /|   |  [______]  |    \/    |  |  |  |  |  | | \  |  |  ____ |  |'
+	print '|  |   | \  / |   |            |  |\  /|  |  |  |__|  |  | |_/  |  |   ____|  | '
+	print '|  |   |  \/  |   |            |  | \/ |  |   \      /   |     /   |  |____   |'
+	print '|  |___|      |___|            |__|    |__|    \____/    |____/    |_______|  |'
+	print '|                                                                             |'
+	print '|=============================================================================|'
 	pass
 		
 def game():
@@ -247,7 +260,7 @@ def game():
 	if mode == '1':
 		singleplayer()
 	elif mode == '2':
-		player = raw_input("enter player(2-4): ")
+		multiplayer()
 	else:
 		os.system('clear')
 		return "Exit"
