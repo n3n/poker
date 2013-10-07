@@ -31,7 +31,7 @@ def gen_Card():
 
 def allmax(hands):
     maxval = hand_rank(max(hands, key=hand_rank))
-    return [hand for hand in hands if hand_rank(hand) == maxval]
+    return [hand for hand in hands if hand_rank(hand) == maxval], maxval[-1]
 
 def hand_rank(hand):
     """
@@ -47,23 +47,23 @@ def hand_rank(hand):
 		ranks = [5,4,3,2,1]
        
     if straight_flush(hand):
-        return 8, max(ranks)
+        return 8, max(ranks), "straight flush"
     elif kind(4, ranks):
-        return 7, kind(4, ranks)
+        return 7, kind(4, ranks), "four of kind"
     elif full_house(ranks):
-        return 6, kind(3, ranks), kind(2, ranks)
+        return 6, kind(3, ranks), kind(2, ranks), "full house"
     elif flush(hand):
-        return 5, ranks
+        return 5, ranks, "flush"
     elif straight(hand):
-        return 4, max(ranks)
+        return 4, max(ranks), "sraight"
     elif kind(3, ranks):
-        return 3, kind(3, ranks)
+        return 3, kind(3, ranks), "three of kind"
     elif twopair(ranks):
-        return 2, twopair(ranks)[0], twopair(ranks)[1], kind(1, ranks)
+        return 2, twopair(ranks)[0], twopair(ranks)[1], kind(1, ranks), "twopair"
     elif kind(2, ranks):
-        return 1, kind(2, ranks), ranks
+        return 1, kind(2, ranks), ranks, "onepair"
     else:
-        return 0, ranks
+        return 0, ranks, "high card"
 	
 def straight_flush(hand):
     """
@@ -168,10 +168,9 @@ def twopair(ranks):
    >>> twopair(tp_ranks)
    (8, 5)
    """
-    ranks.sort(reverse=True)
-    high_pair = kind(2, ranks)
-    ranks.sort()
-    low_pair = kind(2, ranks)
+   
+    high_pair = kind(2, sorted(ranks, reverse=True))
+    low_pair = kind(2, sorted(ranks))
     ranks.sort(reverse=True)
     if high_pair != low_pair:
         return (high_pair, low_pair)
@@ -191,21 +190,16 @@ def graphic_card(hands):
 			if cnt_card == 5:
 				cnt_card = 0
 				card0.append("|");card1.append("|");card2.append("|");card3.append("|");card4.append("|");card5.append("|")
-	print "| " + ' '.join(card0)
-	print "| " + ' '.join(card1)
-	print "| " + ' '.join(card2)
-	print "| " + ' '.join(card3)
-	print "| " + ' '.join(card4)
-	print "| " + ' '.join(card5)
+	print "| " + ' '.join(card0)+"\n"+("| " + ' '.join(card1))+"\n"+"| " + ' '.join(card2)+"\n"+"| " + ' '.join(card3)+"\n"+"| " + ' '.join(card4)+"\n"+"| " + ' '.join(card5)
 
 def singleplayer():
 	'''For a hand that choosing single mode''' 
 	os.system("clear")	
-	print '|=============================================================================|'
+	print '\n\n|=============================================================================|'
 	
 	deck = gen_Card()
 
-	name = raw_input("\nEnter name: ")
+	name = raw_input("|  Enter name: ")
 	
 	gameplayer0, gameplayer1 = [], []
 	for player in xrange(2):
@@ -214,12 +208,25 @@ def singleplayer():
 			(eval('gameplayer%s' % str(player))).append(deck[card_num])
 			deck.pop(card_num)
 			random.shuffle(deck)
-	print "\n|==========================================="
-	print "  " + name
+	#print "\n|=========================================================================="
+	#print "|  " + name
 	graphic_card([gameplayer0, gameplayer1])
-	print "\n|==========================================="
-	print "\n|==========================================="
-	graphic_card(poker([gameplayer0, gameplayer1]))	
+	print "|=========================================================================="
+	#print "\n|==========================================="
+	#print str(poker([gameplayer0, gameplayer1])) == str([gameplayer0])
+	#print str((poker([gameplayer0, gameplayer1]))[0]), str([gameplayer0])# ,str([gameplayer0, gameplayer1])
+	#print gameplayer0, gameplayer1
+	if len(poker([gameplayer0, gameplayer1])) == 2:
+		if str((poker([gameplayer0, gameplayer1]))[0]) == str([gameplayer0]):
+			print "\n                           You win!  with  [" +  str(poker([gameplayer0, gameplayer1])[-1]) +"]"
+			#print "|= " + str(gameplayer0, gameplayer1) + " =|"
+			#poker([gameplayer0, gameplayer1])
+		else:
+			print "\n                                  You lose!"
+	else:
+		print "\n                           Draw!"
+		
+		
 	
 def game():
 	'''Choice for a hand to choose a mode''' 
@@ -236,9 +243,10 @@ def game():
 	print "|         |_|     \__/   |_| \_\   |______|  |_|  \_\        |"
 	print "|------------------------------------------------------------|"
 	
-	print "\nEnter to play."
-	raw_input()
+	raw_input("\n                        Enter to play.")
 	singleplayer()
 
-#game()
+#print hand_rank(['JC', 'TC', '9C', '8C', '7C'])
+game()
 #print poker([['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']])
+#print poker([['TH', '8D', '3D', '5H', '8H'], ['JH', '3C', '3S', 'QD', '8C']])
