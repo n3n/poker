@@ -32,10 +32,6 @@ Hands are ranked as follows(from high to low):
 
 **Note: When hands tie on the rank of a pair, three of a kind, etc, the cards outside break ties following the High Card rules.** 
 
-Royal Straight Flush
---------------------
-Five cards in sequence(A, K, Q, J, T), all of the same suit. The highest suit(S=spade)of hand wins.
-
 
 Straight Flush
 --------------
