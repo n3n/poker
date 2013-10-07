@@ -5,35 +5,35 @@ class TestPoker(unittest.TestCase):
 	'''Example unittest test methods for poker.'''
  
  	def test_poker_1(self):
-		'''Test poker with [['JC', 'TC', '9C', '8C', '7C'],['JS', 'TS', '9S', '8S', '7S']]'''
+		'''Test poker ('straight flush') with [['JC', 'TC', '9C', '8C', '7C'],['JS', 'TS', '9S', '8S', '7S']]'''
 		
 		actual = poker.poker([['JC', 'TC', '9C', '8C', '7C'],['JS', 'TS', '9S', '8S', '7S']])
 		expected = ([['JC', 'TC', '9C', '8C', '7C'], ['JS', 'TS', '9S', '8S', '7S']], 'straight flush')
 		self.assertEqual(actual, expected)
 
  	def test_poker_2(self):
-		'''Test poker with [['9S', '8C', 'KC', '4S', '9H'], ['8D', '3H', 'QS', '3C', 'JD']]'''
+		'''Test poker ('onepair') with [['9S', '8C', 'KC', '4S', '9H'], ['8D', '3H', 'QS', '3C', 'JD']]'''
 		
 		actual = poker.poker([['9S', '8C', 'KC', '4S', '9H'], ['8D', '3H', 'QS', '3C', 'JD']])
 		expected = ([['9S', '8C', 'KC', '4S', '9H']], 'onepair')
 		self.assertEqual(actual, expected)
 
 	def test_poker_3(self):
-		'''Test poker with [['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']]'''
+		'''Test poker ('straight flush') with [['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']]'''
 		
 		actual = poker.poker([['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']])
 		expected = ([['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']], 'straight flush')
 		self.assertEqual(actual, expected)
 		
 	def test_poker_4(self):
-		'''Test poker with [['TS', 'KC', 'KS', 'KH', 'TC'], ['AC', '6S', '4D', '8H', 'TC']]'''
+		'''Test poker ('full house') with [['TS', 'KC', 'KS', 'KH', 'TC'], ['AC', '6S', '4D', '8H', 'TC']]'''
 		
 		actual = poker.poker([['TS', 'KC', 'KS', 'KH', 'TC'], ['AC', '6S', '4D', '8H', 'TC']])
 		expected = ([['TS', 'KC', 'KS', 'KH', 'TC']], 'full house')
 		self.assertEqual(actual, expected)
 
 	def test_poker_5(self):
-		'''Test poker with [['TS', 'KS', '6S', '7S', 'QS'], ['AC', '2S', '4D', '8H', 'TC']]'''
+		'''Test poker ('flush') with [['TS', 'KS', '6S', '7S', 'QS'], ['AC', '2S', '4D', '8H', 'TC']]'''
 		
 		actual = poker.poker([['TS', 'KS', '6S', '7S', 'QS'], ['AC', '2S', '4D', '8H', 'TC']])
 		expected = ([['TS', 'KS', '6S', '7S', 'QS']], 'flush')
