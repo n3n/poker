@@ -30,8 +30,7 @@ def gen_Card():
 	return deck
 
 def allmax(hands):
-    winhand = max(hands, key=hand_rank)
-    maxval = hand_rank(winhand)
+    maxval = hand_rank(max(hands, key=hand_rank))
     return [hand for hand in hands if hand_rank(hand) == maxval]
 
 def hand_rank(hand):
@@ -43,8 +42,7 @@ def hand_rank(hand):
    >>> hand_rank(sf)
    (8, 11)
    """
-    ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
-    ranks.sort(reverse=True)
+    ranks = sorted(['--23456789TJQKA'.index(r) for r,s in hand], reverse=True)
     if ranks == [14,5,4,3,2]:
 		ranks = [5,4,3,2,1]
        
@@ -98,8 +96,7 @@ def straight(hand):
    False
    """
  
-    ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
-    ranks.sort(reverse=True)
+    ranks = sorted(['--23456789TJQKA'.index(r) for r,s in hand], reverse=True)
     if ranks == [14,5,4,3,2]:
 		ranks = [5,4,3,2,1]
   
