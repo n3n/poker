@@ -4,14 +4,7 @@ This README file contains information about the poker game.
 
 Game Mode
 ----------
-There are two mode that hands can be choose.
-
-* 1-Mode:Single-Player
-	+ 1.1-Mode :A hand get five cards in one time.
-	+ 1.2-Mode :A hand get five cards by rolling.
-* 2-Mode:MultiPlayer
-	+ 1.1-Mode :A hand get five cards in one time.
-	+ 1.2-Mode :A hand get five cards by rolling.
+ * SinglePlayer : You VS Bot game; shuffling five cards to each hand
 
 General Rules
 =============
