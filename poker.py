@@ -177,43 +177,60 @@ def twopair(ranks):
         return (high_pair, low_pair)
     return ()
 
+def graphic_card(hands):
+	card0, card1, card2, card3, card4, card5, cnt_card = [], [], [], [], [], [], 0
+	for hand in hands:
+		for rank,suit in hand:
+			card0.append("      ")
+			card1.append(" ___  ")
+			card2.append("|%s  | " % rank)
+			card3.append("|   | ")
+			card4.append("|__%s| " % suit)
+			card5.append("      ")
+			cnt_card += 1
+			if cnt_card == 5:
+				cnt_card = 0
+				card0.append("|");card1.append("|");card2.append("|");card3.append("|");card4.append("|");card5.append("|")
+	print "| " + ' '.join(card0)
+	print "| " + ' '.join(card1)
+	print "| " + ' '.join(card2)
+	print "| " + ' '.join(card3)
+	print "| " + ' '.join(card4)
+	print "| " + ' '.join(card5)
+
 def singleplayer():
 	'''For a hand that choosing single mode''' 
 	os.system("clear")	
 	print '|=============================================================================|'
-	print '|     _____                                                                   |'
-	print '|    / ____|                                                                  |'
-	print '|   | |                __      __      ____      ____      _______            |'
-	print '|   | |               |  |    |  |    /    \    |    \    |   ____|           |'
-	print '|    \ \\     ______   |   \  /   |   /  __  \   |  _  \   |  |____            | '
-	print '|      \ \\  [______]  |    \/    |  |  |  |  |  | | \  |  |  ____ |           |'
-	print '|       | |           |  |\  /|  |  |  |__|  |  | |_/  |  |   ____|           | '
-	print '|   ____| |           |  | \/ |  |   \      /   |     /   |  |____            |'
-	print '|  |_____/            |__|    |__|    \____/    |____/    |_______|           |'
-	print '|                                                                             |'
-	print '|=============================================================================|'
+	#print '|     _____                                                                   |'
+	#print '|    / ____|                                                                  |'
+	#print '|   | |                __      __      ____      ____      _______            |'
+	#print '|   | |               |  |    |  |    /    \    |    \    |   ____|           |'
+	#print '|    \ \\     ______   |   \  /   |   /  __  \   |  _  \   |  |____            | '
+	#print '|      \ \\  [______]  |    \/    |  |  |  |  |  | | \  |  |  ____ |           |'
+	#print '|       | |           |  |\  /|  |  |  |__|  |  | |_/  |  |   ____|           | '
+	#print '|   ____| |           |  | \/ |  |   \      /   |     /   |  |____            |'
+	#print '|  |_____/            |__|    |__|    \____/    |____/    |_______|           |'
+	#print '|                                                                             |'
+	#print '|=============================================================================|'
 	
 	deck = gen_Card()
 
-	name = raw_input("Enter name: ")
-	players = input("Enter players(1-3): ")
-	print ''
-	print "" + name + ":\n"
-	gameplayer0, gameplayer1, gameplayer2, gameplayer3 = [], [], [], []
-	for player in xrange(players):
+	name = raw_input("\nEnter name: ")
+	
+	gameplayer0, gameplayer1 = [], []
+	for player in xrange(2):
 		for card in xrange(5):
 			card_num = random.randrange(0, len(deck))
 			(eval('gameplayer%s' % str(player))).append(deck[card_num])
 			deck.pop(card_num)
 			random.shuffle(deck)
-	print gameplayer0, gameplayer1, gameplayer2		
-	if players == 1: print poker([gameplayer0])
-	elif players == 2: print poker([gameplayer0, gameplayer1])
-	elif players == 3: print poker([gameplayer0, gameplayer1, gameplayer2])
-	#elif players == 4: print poker([gameplayer0, gameplayer1, gameplayer2, gameplayer3])
-	else:
-		os.system("clear")
-		print "Exit!"
+	print "\n|==========================================="
+	print "  " + name
+	graphic_card([gameplayer0, gameplayer1])
+	print "\n|==========================================="
+	print "\n|==========================================="
+	graphic_card(poker([gameplayer0, gameplayer1]))	
 	
 def multiplayer():
 	'''For a hand that choosing multiplayer mode'''
@@ -246,16 +263,9 @@ def game():
 	print "|         |_|     \__/   |_| \_\   |______|  |_|  \_\        |"
 	print "|------------------------------------------------------------|"
 	
-	
-	print "Select Mode: 1. SinglePlayer"
-	print "             2. Multiplayer"
-	mode = raw_input("Mode: ")
-	if mode == '1':
-		singleplayer()
-	elif mode == '2':
-		multiplayer()
-	else:
-		os.system('clear')
-		return "Exit"
+	print "\nEnter to play."
+	raw_input()
+	singleplayer()
 
-game()
+#game()
+#print poker([['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']])
