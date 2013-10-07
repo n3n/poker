@@ -66,10 +66,6 @@ def hand_rank(hand):
         return 1, kind(2, ranks), ranks
     else:
         return 0, ranks
-        
-def royal_straight_flush(hand):
-	
-	return flush(hand)
 	
 def straight_flush(hand):
     """
@@ -202,26 +198,28 @@ def singleplayer():
 	
 	deck = gen_Card()
 
-	
 	name = raw_input("Enter name: ")
-	players = input("Enter players(2-4): ")
+	players = input("Enter players(1-3): ")
 	print ''
-	print "" + name + ":"
-	gameplayer0, gameplayer1, gameplayer2, gameplayer3, i = [], [], [], [], 1
-	for player in xrange(3):
+	print "" + name + ":\n"
+	gameplayer0, gameplayer1, gameplayer2, gameplayer3 = [], [], [], []
+	for player in xrange(players):
 		for card in xrange(5):
-			card_num = random.randrange(0, 53-i)
-			i += 1
+			card_num = random.randrange(0, len(deck))
 			(eval('gameplayer%s' % str(player))).append(deck[card_num])
 			deck.pop(card_num)
-			random.shuffle(deck)		
+			random.shuffle(deck)
+	print gameplayer0, gameplayer1, gameplayer2		
 	if players == 1: print poker([gameplayer0])
 	elif players == 2: print poker([gameplayer0, gameplayer1])
 	elif players == 3: print poker([gameplayer0, gameplayer1, gameplayer2])
-	elif players == 4: print poker([gameplayer0, gameplayer1, gameplayer2, gameplayer3])
+	#elif players == 4: print poker([gameplayer0, gameplayer1, gameplayer2, gameplayer3])
+	else:
+		os.system("clear")
+		print "Exit!"
 	
 def multiplayer():
-	'''For a hand that choosing multiplayer mode''' 
+	'''For a hand that choosing multiplayer mode'''
 	os.system("clear")	
 	print '|=============================================================================|'
 	print '|   ___        ___                                                            |'
@@ -235,11 +233,9 @@ def multiplayer():
 	print '|  |___|      |___|            |__|    |__|    \____/    |____/    |_______|  |'
 	print '|                                                                             |'
 	print '|=============================================================================|'
-	pass
 		
 def game():
 	'''Choice for a hand to choose a mode''' 
-	
 	
 	print "|------------------------------------------------------------|"
 	print "|                         Poker Game                         |"
@@ -265,8 +261,4 @@ def game():
 		os.system('clear')
 		return "Exit"
 
-#print twopair([11, 10, 9, 8, 7])
-print game()
-#print poker([['JC', 'TC', '9C', '8C', '7C'],['5S', '5H', '5D', '5C', 'KS']])
-#print poker([['9S', '8C', 'KC', '4S', 'TH'], ['8D', '4H', 'QS', '3C', 'JD']])
-#print singleplayer()
+game()
