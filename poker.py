@@ -55,7 +55,7 @@ def hand_rank(hand):
         return 4, max(ranks), "sraight"
     elif kind(3, ranks):
         return 3, kind(3, ranks), "three of kind"
-    elif twopair(ranks):
+    elif twopair(sorted(ranks, reverse=True)):
         return 2, twopair(ranks)[0], twopair(ranks)[1], kind(1, ranks), "twopair"
     elif kind(2, ranks):
         return 1, kind(2, ranks), ranks, "onepair"
@@ -112,8 +112,7 @@ def flush(hand):
    >>> flush(fk)
    False
    """
-    suits = [s for r,s in hand]
-    return len(set(suits)) == 1
+    return len(set([s for r,s in hand])) == 1
 
 def full_house(ranks):
    """
@@ -168,7 +167,6 @@ def twopair(ranks):
    
     high_pair = kind(2, sorted(ranks, reverse=True))
     low_pair = kind(2, sorted(ranks))
-    ranks.sort(reverse=True)
     if high_pair != low_pair:
         return (high_pair, low_pair)
     return ()
@@ -191,13 +189,11 @@ def graphic_card(hands):
 
 def singleplayer():
 	'''For a hand that choosing single mode''' 
-	os.system("clear")	
-	print '\n\n|=============================================================================|'
 	
-	deck = gen_Card()
-
+	print '\n\n|=============================================================================|'	
 	name = raw_input("|  Enter name: ")
 	
+	deck = gen_Card()
 	gameplayer0, gameplayer1 = [], []
 	for player in xrange(2):
 		for card in xrange(5):
@@ -215,8 +211,6 @@ def singleplayer():
 	else:
 		print "\n                           Draw!"
 		
-		
-	
 def game():
 	'''Choice for a hand to choose a mode''' 
 	
@@ -233,6 +227,7 @@ def game():
 	print "|------------------------------------------------------------|"
 	
 	raw_input("\n                        Enter to play.")
+	os.system("clear")	
 	singleplayer()
 
-game()
+#game()
