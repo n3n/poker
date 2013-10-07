@@ -8,30 +8,43 @@ class TestPoker(unittest.TestCase):
 		'''Test poker with [['JC', 'TC', '9C', '8C', '7C'],['JS', 'TS', '9S', '8S', '7S']]'''
 		
 		actual = poker.poker([['JC', 'TC', '9C', '8C', '7C'],['JS', 'TS', '9S', '8S', '7S']])
-		expected = [['JC', 'TC', '9C', '8C', '7C'], ['JS', 'TS', '9S', '8S', '7S']]
+		expected = ([['JC', 'TC', '9C', '8C', '7C'], ['JS', 'TS', '9S', '8S', '7S']], 'straight flush')
 		self.assertEqual(actual, expected)
 
  	def test_poker_2(self):
 		'''Test poker with [['9S', '8C', 'KC', '4S', '9H'], ['8D', '3H', 'QS', '3C', 'JD']]'''
 		
 		actual = poker.poker([['9S', '8C', 'KC', '4S', '9H'], ['8D', '3H', 'QS', '3C', 'JD']])
-		expected = [['9S', '8C', 'KC', '4S', '9H']]
+		expected = ([['9S', '8C', 'KC', '4S', '9H']], 'onepair')
 		self.assertEqual(actual, expected)
 
 	def test_poker_3(self):
-		'''Test poker with [['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TC']]'''
+		'''Test poker with [['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']]'''
 		
 		actual = poker.poker([['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']])
-		expected = [['AS', 'KS', 'QS', 'JS', 'TS']]
+		expected = ([['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']], 'straight flush')
+		self.assertEqual(actual, expected)
+		
+	def test_poker_4(self):
+		'''Test poker with [['TS', 'KC', 'KS', 'KH', 'TC'], ['AC', '6S', '4D', '8H', 'TC']]'''
+		
+		actual = poker.poker([['TS', 'KC', 'KS', 'KH', 'TC'], ['AC', '6S', '4D', '8H', 'TC']])
+		expected = ([['TS', 'KC', 'KS', 'KH', 'TC']], 'full house')
 		self.assertEqual(actual, expected)
 
+	def test_poker_5(self):
+		'''Test poker with [['TS', 'KS', '6S', '7S', 'QS'], ['AC', '2S', '4D', '8H', 'TC']]'''
+		
+		actual = poker.poker([['TS', 'KS', '6S', '7S', 'QS'], ['AC', '2S', '4D', '8H', 'TC']])
+		expected = ([['TS', 'KS', '6S', '7S', 'QS']], 'flush')
+		self.assertEqual(actual, expected)
+		
 	def test_royal_straight_flush(self):
 		'''Test royal straight flush with ['AC', 'KC', 'QC', 'JC', 'TC']'''
 		
 		actual = poker.straight_flush(['AC', 'KC', 'QC', 'JC', 'TC'])
 		expected = True
-		self.assertEqual(actual, expected)
-	
+		self.assertEqual(actual, expected)	
 		
 	def test_straight_flush_1(self):
 		'''Test straight flush with ['JC', 'TC', '9C', '8C', '7C']'''
