@@ -13,9 +13,6 @@ def poker(hands):
    [['JC', 'TC', '9C', '8C', '7C'], ['JS', 'TS', '9S', '8S', '7S']]
    >>> poker([sf, fk])
    [['JC', 'TC', '9C', '8C', '7C']]
-   >>> fh = ['5S', '5H', '5D', '8C', '8S']
-   >>> poker([fh, fk])
-   [['5S', '5H', '5D', '5C', 'KS']]
    """
     return allmax(hands)
  
@@ -208,19 +205,11 @@ def singleplayer():
 			(eval('gameplayer%s' % str(player))).append(deck[card_num])
 			deck.pop(card_num)
 			random.shuffle(deck)
-	#print "\n|=========================================================================="
-	#print "|  " + name
 	graphic_card([gameplayer0, gameplayer1])
 	print "|=========================================================================="
-	#print "\n|==========================================="
-	#print str(poker([gameplayer0, gameplayer1])) == str([gameplayer0])
-	#print str((poker([gameplayer0, gameplayer1]))[0]), str([gameplayer0])# ,str([gameplayer0, gameplayer1])
-	#print gameplayer0, gameplayer1
 	if len(poker([gameplayer0, gameplayer1])) == 2:
 		if str((poker([gameplayer0, gameplayer1]))[0]) == str([gameplayer0]):
 			print "\n                           You win!  with  [" +  str(poker([gameplayer0, gameplayer1])[-1]) +"]"
-			#print "|= " + str(gameplayer0, gameplayer1) + " =|"
-			#poker([gameplayer0, gameplayer1])
 		else:
 			print "\n                                  You lose!"
 	else:
@@ -246,7 +235,4 @@ def game():
 	raw_input("\n                        Enter to play.")
 	singleplayer()
 
-#print hand_rank(['JC', 'TC', '9C', '8C', '7C'])
 game()
-#print poker([['AC', 'KC', 'QC', 'JC', 'TC'], ['AS', 'KS', 'QS', 'JS', 'TS']])
-#print poker([['TH', '8D', '3D', '5H', '8H'], ['JH', '3C', '3S', 'QD', '8C']])
