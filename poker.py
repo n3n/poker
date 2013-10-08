@@ -201,11 +201,15 @@ def singleplayer():
 			(eval('gameplayer%s' % str(player))).append(deck[card_num])
 			deck.pop(card_num)
 			random.shuffle(deck)
+			
 	graphic_card([gameplayer0, gameplayer1])
+	print "\t\t" + hand_rank(gameplayer0)[-1],
+	print "\t\t\t    " + hand_rank(gameplayer1)[-1]
 	print "|=========================================================================="
+	
 	if len(poker([gameplayer0, gameplayer1])) == 2:
 		if str((poker([gameplayer0, gameplayer1]))[0]) == str([gameplayer0]):
-			print "\n                           You win!  with  [" +  str(poker([gameplayer0, gameplayer1])[-1]) +"]"
+			print "\n                                 You win! "#$with  [" +  str(poker([gameplayer0, gameplayer1])[-1]) +"]"
 		else:
 			print "\n                                  You lose!"
 	else:
@@ -230,4 +234,4 @@ def game():
 	os.system("clear")	
 	singleplayer()
 
-#game()
+game()
