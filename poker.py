@@ -52,7 +52,7 @@ def hand_rank(hand):
     elif flush(hand):
         return 5, ranks, "flush"
     elif straight(hand):
-        return 4, max(ranks), "sraight"
+        return 4, max(ranks), "straight"
     elif kind(3, ranks):
         return 3, kind(3, ranks), "three of kind"
     elif twopair(sorted(ranks, reverse=True)):
