@@ -37,7 +37,35 @@ class TestPoker(unittest.TestCase):
 		
 		actual = poker.poker([['TS', 'KS', '6S', '7S', 'QS'], ['AC', '2S', '4D', '8H', 'TC']])
 		expected = ([['TS', 'KS', '6S', '7S', 'QS']], 'flush')
-		self.assertEqual(actual, expected)	
+		self.assertEqual(actual, expected)
+		
+	def test_poker_6(self):
+		'''Test poker ('four of kind') with [['KS', 'KC', 'KH', '7S', 'QS'], ['TC', 'TD', 'TH', 'TS', '5D']]'''
+		
+		actual = poker.poker([['KS', 'KC', 'KH', '7S', 'QS'], ['TC', 'TD', 'TH', 'TS', '5D']])
+		expected = ([['TC', 'TD', 'TH', 'TS', '5D']], 'four of kind')
+		self.assertEqual(actual, expected)
+		
+	def test_poker_7(self):
+		'''Test poker ('three of kind') with [['KS', 'KC', 'KH', '7S', 'QS'], ['TC', 'TD', 'KH', '4S', '5D']]'''
+		
+		actual = poker.poker([['KS', 'KC', 'KH', '7S', 'QS'], ['TC', 'TD', 'KH', '4S', '5D']])
+		expected = ([['KS', 'KC', 'KH', '7S', 'QS']], 'three of kind')
+		self.assertEqual(actual, expected)
+
+	def test_poker_8(self):
+		'''Test poker ('twopair') with [['3S', '4C', '6H', '7S', 'QS'], ['TC', 'TD', '4H', '4S', '5D']]'''
+		
+		actual = poker.poker([['3S', '4C', '6H', '7S', 'QS'], ['TC', 'TD', '4H', '4S', '5D']])
+		expected = ([['TC', 'TD', '4H', '4S', '5D']], 'twopair')
+		self.assertEqual(actual, expected)
+
+	def test_poker_9(self):
+		'''Test poker ('straight') with [['3S', '4C', '7H', '6S', '5S'], ['TC', 'TD', '4H', '4S', '5D']]'''
+		
+		actual = poker.poker([['3S', '4C', '7H', '6S', '5S'], ['TC', 'TD', '4H', '4S', '5D']])
+		expected = ([['3S', '4C', '7H', '6S', '5S']], 'straight')
+		self.assertEqual(actual, expected)
 		
 	def test_straight_flush_1(self):
 		'''Test straight flush with ['JC', 'TC', '9C', '8C', '7C']'''
