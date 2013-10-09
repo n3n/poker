@@ -10,9 +10,9 @@ def poker(hands):
    >>> fk = ['5S', '5H', '5D', '5C', 'KS']
    >>> sf2 = ['JS', 'TS', '9S', '8S', '7S']
    >>> poker([sf, sf2])
-   [['JC', 'TC', '9C', '8C', '7C'], ['JS', 'TS', '9S', '8S', '7S']]
+   [['JC', 'TC', '9C', '8C', '7C'], ['JS', 'TS', '9S', '8S', '7S'], 'straight flush']
    >>> poker([sf, fk])
-   [['JC', 'TC', '9C', '8C', '7C']]
+   [['JC', 'TC', '9C', '8C', '7C', 'straight flush']]
    """
     return allmax(hands)
  
