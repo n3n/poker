@@ -19,7 +19,6 @@ How the hands are ranked
 ------------------------
 Hands are ranked as follows(from high to low):
 
-* Royal Straight Flush
 * Straight Flush
 * Four of a kind
 * Full House
